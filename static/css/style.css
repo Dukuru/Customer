@@ -43,6 +43,7 @@ ul li a{
 }
 table{
 	width:100%;
+	box-shadow: 3px 3px 5px grey;
 }
 table th,tr{
 	background: transparent linear-gradient(rgba(173, 173, 173, 0.5) 0%, #E0E0E0 100%) repeat scroll 0% 0%;
@@ -77,11 +78,13 @@ h3{
 	color:white;
 	vertical-align: bottom;
 	padding-left: 4px;
+	box-shadow: 3px 3px 5px grey;
 }
 .input input{
 	height: 31px;
 	width:250px;
 	margin-top: 3px;
+	box-shadow: 3px 3px 5px grey;
 }
 .input p{
 	color:red;
@@ -92,4 +95,12 @@ text-align: center;
 }
 td{
 	padding: 10px;
+}
+#no-record{
+   background: transparent linear-gradient(rgba(173, 173, 173, 0.5) 0%, #E0E0E0 100%) repeat scroll 0% 0%;
+	height:30px;
+	text-align: center;
+	font-size: 30px;
+	padding-top: 5px;
+	font-family: sans-serif;
 }

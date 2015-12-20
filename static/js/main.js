@@ -133,7 +133,7 @@ customerApp.controller('UpdateCustomer',['$scope','$routeParams','$http','shared
 	{
 		location.href="#/"
 	}
-	$scope.Message = "Update" + $scope.customer.name;
+	$scope.Message = "Update " + $scope.customer.name;
 	$scope.addAddress = function(){
     	$scope.customer.address.push({addresstype:'',flat: '', street: '', state: '', pincode: ''});
   	}
