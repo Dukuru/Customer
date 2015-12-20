@@ -117,7 +117,7 @@ customerApp.controller('AddNewCustomer', function($scope,$http) {
 			console.log("successfully Added");
 			location.href="#/ShowAllCustomers";
 		}).error(function(err){
-			console.log("error occured "+JSON.strigify(err) );
+			console.log("error occured "+JSON.stringify(err) );
 		});
     }
   }

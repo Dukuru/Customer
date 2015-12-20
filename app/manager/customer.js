@@ -32,13 +32,6 @@ Customer.prototype.verify = function(){
 		{
 			return false;
 		}
-	if('/^[1-9]{1}[0-9]{9}$/'.test(this.mobile))
-		{
-			return false;
-		}
-	if(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)){
-		return false;
-	}
 	for(var ad in this.address)
 		{
 			if(!this.address[ad].verify())
