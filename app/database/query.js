@@ -63,7 +63,7 @@ exports.getCustomerDetails = function(page,pagesize,callback)
 		},
 		function(customers,cb)
 		{
-			async.each(customers,function(customer,cb1){
+			async.eachSeries(customers,function(customer,cb1){
 				var obj={};
 				async.waterfall([
 					function(cb2)
