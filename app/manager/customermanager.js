@@ -1,6 +1,7 @@
 var query = require('../database/query.js');
 var customer = require('./customer.js');
 var bills = require('./bills.js');
+var utils = require('./utils.js');
 exports.init = function(req,res){
 	res.sendFile('html/customer.html',{root:__dirname+'../../../static'}); //send initial file.
 };
@@ -10,32 +11,27 @@ exports.addCustomer = function(req,res){
 			var data = customer.Customer(req.body.data);
 			if(data === false)
 				{
-					res.writeHead(400,{ "Content-Type" : "application/json" });
-					res.end(JSON.stringify({ error: 404, message: "Error in data" }));
+					utils.failure(res,{"code":"400","Message":"Data Cannot be parsed"});
 					return;
 				}
 			else
 				{
 					if(req.body.update)
 						{
-							console.log(req.body);
 							if(!req.body.id)
 								{
-									res.writeHead(400,{ "Content-Type" : "application/json" });
-									res.end(JSON.stringify({ error: err.code, message: "Id not specified" }));
+									utils.failure(res,{"code":"400","Message":"Id not specified"});
 									return;
 								}
 							query.updateCustomer(req.body.id,req.body.data,function(err,result){
 								if(err)
 								{
-									res.writeHead(400,{ "Content-Type" : "application/json" });
-									res.end(JSON.stringify({ error: err.code, message: err.message }));
+									utils.failure(res,err);
 									return;
 								}
 							else
 								{
-									res.writeHead(200,{ "Content-Type" : "application/json" });
-									res.end(JSON.stringify({ error: null, message: result }));
+									utils.success(res,result);
 									return;
 								}
 							
@@ -46,15 +42,13 @@ exports.addCustomer = function(req,res){
 							query.addCustomer(data, function(err,result){
 							if(err)
 								{
-									res.writeHead(400,{ "Content-Type" : "application/json" });
-									res.end(JSON.stringify({ error: err.code, message: err.message }));
+									utils.failure(res,err);
 									return;
 								}
 							else
 								{
 									bills.generate(function(){});
-									res.writeHead(200,{ "Content-Type" : "application/json" });
-									res.end(JSON.stringify({ error: null, message: "Succfully Added" }));
+									utils.success(res,result);
 									return;
 								}
 							});
@@ -66,14 +60,12 @@ exports.generateBills = function(req,res){
 	bills.generate(function(err,data){
 		if(err)
 			{
-				res.writeHead(400,{ "Content-Type" : "application/json" });
-				res.end(JSON.stringify({ error: err.code, message: err.message }));
+				utils.failure(res,err);
 				return;
 			}
 		else
 			{
-				res.writeHead(200,{ "Content-Type" : "application/json" });
-				res.end(JSON.stringify({ error: null, message: "Succfully Added" }));
+				utils.success(res,{message: "Succfully Added" });
 				return;
 			}
 	});
@@ -85,16 +77,13 @@ exports.deleteCustomer = function(req,res)
 			query.deleteCustomer(req.body.id,function(err){
 				if(err)
 					{
-						res.writeHead(400,{ "Content-Type" : "application/json" });
-						res.end(JSON.stringify({ error: err.code, message: err.message }));
+						utils.failure(res,err,err.message);
 						return;
 					}
 				else
 					{
-						res.writeHead(200,{ "Content-Type" : "application/json" });
-						res.end(JSON.stringify({ error: null, message: "Succfully Deleted" }));
-						return;
-						
+						utils.success(res,{message: "Succfully Deleted" });
+						return;						
 					}
 			});
 		}
@@ -106,14 +95,12 @@ exports.getCustomerDetails = function(req,res)
 	query.getCustomerDetails(page,pagesize,function(err,data){
 		if(err)
 		{
-			res.writeHead(400,{ "Content-Type" : "application/json" });
-			res.end(JSON.stringify({ error: err.code, message: err.message }));
+			utils.failure(res,err,err.message);
 			return;
 		}
 	else
 		{
-			res.writeHead(200,{ "Content-Type" : "application/json" });
-			res.end(JSON.stringify({ error: null, data: data }));
+			utils.success(res,data);
 			return;
 		}
 	});

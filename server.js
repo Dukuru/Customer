@@ -21,6 +21,6 @@ database.init(function(err,results){
 		}
 	else
 		{
-			app.listen(process.env.PORT||3000);
+			app.listen(8081);
 		}
 });
