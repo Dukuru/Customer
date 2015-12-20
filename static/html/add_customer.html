@@ -1,0 +1,78 @@
+<div>
+	<h3>{{Message}}</h3>
+	<div id="details">
+		<form id="first" name="customerForm" novalidate ng-submit="save()">
+			<div class="input">
+				<label>Name*</label>
+				<input type="text" name="name" ng-model="customer.name" required placeholder="name" />
+				<p ng-show=" submitted && customerForm.name.$error.required">Name is required.</p>
+			</div>
+			<div class="input">
+				<label>Mobile*</label>
+				<input type="number" name="mobile" ng-pattern="/^[1-9]{1}[0-9]{9}$/" ng-model="customer.mobile" required placeholder="mobile" />
+				<p ng-show=" submitted && customerForm.mobile.$error.required">Mobile is required.</p>
+				<p ng-show=" submitted && customerForm.mobile.$error.pattern">Please add 10 digit mobile number.</p>
+			</div>
+			<div class="input">
+				<label>Phone*</label>
+				<input type="number" name="phone" ng-model="customer.phone" required placeholder="9876543210" />
+				<p ng-show="submitted && customerForm.phone.$error.required">Phone is required.</p>
+				<p ng-show="submitted && customerForm.phone.$invalid">Invalid Phone Number.</p>
+			</div>
+			<div class="input">
+				<label>Date Of Birth*</label>
+				<input type="text" name="dob" ng-pattern="/^(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])\/(199\d|[2-9]\d{3})$/" ng-model="customer.dob" required placeholder="MM/DD/YYYY" />
+				<p ng-show="submitted && customerForm.dob.$error.pattern">Invalid Date</p>
+				<p ng-show="submitted && customerForm.dob.$error.required">DOB is required.</p>
+			</div>
+			<div class="input">
+				<label>Email*</label>
+				<input type="email" name="email" ng-model="customer.email" required placeholder="xyz@gmail.com" />
+				<p ng-show="submitted && customerForm.email.$error.required">Email is required.</p>
+				<p ng-show="submitted && customerForm.email.$error.email">Enter valid email</p>
+			</div>
+
+			<div ng-repeat="address in customer.address">
+				<div>
+					<div class="input">
+						<label>Address Type*</label>
+						<input type="text" name="addresstype" ng-model="address.addresstype" required placeholder="[Home, Office]" />
+						<p ng-show="submitted && customerForm.addresstype.$error.required">Address type is required.</p>
+					</div>
+					<div class="input">
+						<label>Flat*</label>
+						<input type="text" name="flat" ng-model="address.flat" required placeholder="92" />
+						<p ng-show="submitted && customerForm.flat.$error.required">Flat is required.</p>
+					</div>
+					<div class="input">
+						<label>Street*</label>
+						<input type="text" name="street" ng-model="address.street" required placeholder="Street" />
+						<p ng-show="submitted && customerForm.street.$error.required">Street is required.</p>
+					</div>
+					<div class="input">
+						<label>State*</label>
+						<input type="text" name="state" ng-model="address.state" required placeholder="TamilNadu" />
+						<p ng-show="submitted && customerForm.state.$error.required">State is required.</p>
+					</div>
+					<div class="input">
+						<label>Pin Code*</label>
+						<input type="text" name="pincode" ng-model="address.pincode" required placeholder="603202" />
+						<p ng-show="submitted && customerForm.pincode.$error.required">Pincode is required.</p>
+					</div>
+					<div>
+                		<button ng-click="removeAddress($index, customer)">Remove Address</a>
+            		</div>
+					<hr/>
+				</div>
+			</div>
+
+			<div>
+				<div id="bottom">
+					<button ng-click="addAddress()">Add address </button>
+					<button ng-click="back()"> Back</button>
+					<button type="submit" ng-click="submitted=true">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

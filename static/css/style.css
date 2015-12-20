@@ -1,0 +1,94 @@
+#left{
+	height:100px;
+	width:100%;
+	background: transparent linear-gradient(rgba(67, 69, 69, 0.53) 0%, #333 100%) repeat scroll 0% 0%;
+}
+#right{
+	height:500px;
+	width:100%;
+}
+body{
+	margin:0px;
+}
+#left h1{
+	text-align: center;
+	color: white;
+	padding-top:20px;
+	margin:0px;
+}
+ul li{
+	margin-top:10px;
+	color:white;
+	list-style-type: none;
+}
+ul li a{
+	text-decoration: none;
+	color:white;
+}
+#topheader div{
+	float:left;
+	padding-top:10px;
+	margin-left:30px;
+}
+#topheader div:first-child{
+	margin-left:10px;
+}
+#topheader div:nth-child(3){
+	margin-left:5px;
+}
+#topheader{
+	overflow: hidden;
+	height:10%;
+	background: transparent linear-gradient(rgba(173, 173, 173, 0.5) 0%, #E0E0E0 100%) repeat scroll 0% 0%;
+}
+table{
+	width:100%;
+}
+table th,tr{
+	background: transparent linear-gradient(rgba(173, 173, 173, 0.5) 0%, #E0E0E0 100%) repeat scroll 0% 0%;
+	height:30px;
+}
+h3{
+	background: transparent linear-gradient(rgba(173, 173, 173, 0.5) 0%, #E0E0E0 100%) repeat scroll 0% 0%;
+	margin:0px;
+	height:10%;
+	padding-top:10px;
+	text-align: center;
+}
+#details{
+	width:94%;
+	height:auto;
+	background-color:lightgrey;
+	margin-left:3%; 
+	margin-top: 2px;
+	
+}
+.input{
+	text-align:justify;
+	margin-left: 420px;
+}
+.input label,input,p{
+	display:  inline-block;
+}
+.input label{
+	background-color:grey;
+	height: 30px;
+	width:150px;
+	border: 2px solid green;
+	color:white;
+}
+.input input{
+	height: 35px;
+	width:250px;
+	margin-top: 3px;
+}
+.input p{
+	color:red;
+	margin:0px;
+}
+#bottom{
+text-align: center;
+}
+td{
+	padding: 10px;
+}

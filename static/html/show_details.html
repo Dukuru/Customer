@@ -1,0 +1,45 @@
+<div>
+    <div>
+		<div id="topheader">
+			<div>
+				<label>Filters : </label><input type="text" ng-model="filtertxt"/>
+			</div>
+			<div>
+				<label>Records per page : </label><input type="text" ng-model="pagesize"/>
+			</div>
+			<div>
+				<button type="text" ng-click="loadpage()">Go</button>
+				</div>
+			<div>
+				<button ng-click="decpage()">previous</button>
+			</div>
+			<div>
+				<button ng-click="incrpage()">next</button>
+			</div>
+		</div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Phone</th>
+                <th>E-mail</th>
+                <th>No of Bills</th>
+                <th>Amount</th>
+                <th>Avg Amount</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="customer in customers | filter:filtertxt">
+                <td>{{customer.name}}</td>
+                <td>{{customer.mobile}}</td>
+                <td>{{customer.phone}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.noofbills}}</td>
+                <td>{{customer.amount | number:4}}</td>
+                <td>{{customer.avg | number:4}}</td>
+                <td>
+                    <a href="" ng-click="editCustomer(customer.id)">Edit</a> | <a href="" ng-click="deleteCustomer(customer.id)">Remove</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
