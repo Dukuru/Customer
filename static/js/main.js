@@ -41,6 +41,7 @@ customerApp.controller('ShowAllCustomers',['$scope','$http','sharedCustomer', fu
 		$http.post('/deletecustomer',{"id":id}).success(function(result){
 			$scope.getdata();
 		}).error(function(err){
+			alert("Some Error Occured");
 			console.log("error occured "+err );
 		});
 	}
@@ -89,6 +90,7 @@ customerApp.controller('ShowAllCustomers',['$scope','$http','sharedCustomer', fu
 				}
 			console.log(result.data);
 		}).error(function(err){
+			alert("Some Error Occured");
 			console.log("error occured "+err );
 		});
 	}
@@ -117,6 +119,7 @@ customerApp.controller('AddNewCustomer', function($scope,$http) {
 			console.log("successfully Added");
 			location.href="#/ShowAllCustomers";
 		}).error(function(err){
+			alert("Some Error Occured");
 			console.log("error occured "+JSON.stringify(err) );
 		});
     }
@@ -126,7 +129,6 @@ customerApp.controller('AddNewCustomer', function($scope,$http) {
 customerApp.controller('UpdateCustomer',['$scope','$routeParams','$http','sharedCustomer', function($scope,$routeparams,$http,sharedCustomer) {
 	console.log(sharedCustomer.getProperty());
 	$scope.customer = sharedCustomer.getProperty();
-	console.log("hello");
 	if(Object.keys($scope.customer).length===0)
 	{
 		location.href="#/"
@@ -143,6 +145,7 @@ customerApp.controller('UpdateCustomer',['$scope','$routeParams','$http','shared
       	$http.post('/addcustomer',{"update":true,"id":$routeparams.id,"data":$scope.customer}).success(function(result){
 			location.href="#/ShowAllCustomers";		
 		}).error(function(err){
+			alert("Some Error Occured");
 			console.log("error occured "+JSON.stringify(err) );
 		});
     }

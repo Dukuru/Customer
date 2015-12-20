@@ -74,11 +74,12 @@ h3{
 	background-color:grey;
 	height: 30px;
 	width:150px;
-	border: 2px solid green;
 	color:white;
+	vertical-align: bottom;
+	padding-left: 4px;
 }
 .input input{
-	height: 35px;
+	height: 31px;
 	width:250px;
 	margin-top: 3px;
 }
