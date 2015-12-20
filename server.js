@@ -8,7 +8,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/static"));
 //routing logic.
-//app.get("/",customer.init);
 app.post("/addcustomer",customer.addCustomer);
 app.post("/generatebills",customer.generateBills);
 app.post("/deletecustomer",customer.deleteCustomer);
@@ -22,6 +21,6 @@ database.init(function(err,results){
 		}
 	else
 		{
-			app.listen(8181);
+			app.listen(process.env.PORT||3000);
 		}
 });

@@ -3,7 +3,7 @@
   "description": "customer details app",
   "version": "0.0.1",
   "main": "server.js",
-  "auther": "Ashutosh Sharma",
+  "author": "Ashutosh Sharma",
   "dependencies": {
     "async": "^1.5.0",
     "body-parser": "^1.14.2",
